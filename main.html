@@ -10,58 +10,183 @@
 
 <body>
   <div class="wrapbox">
-    <!-- 맨위에 바 -->
     <div class="navbox">
-      <span class="nav">Gmail</span>
-      <span class="nav">이미지</span>
-      <span class="nav">아이콘</span>
-      <span class="nav">아이콘</span>
+      <!-- 맨위에 바 -->
+      <div class="textbox">
+        <span class="nav text" onclick="readyalert('메일')">Gmail</span>
+        <span class="nav text" onclick="readyalert('이미지')">이미지</span>
+      </div>
+      <span class="nav iconbox" onclick="readyalert('서치랩스')" title="Search Labs">
+        <img src="../images/labs_icon.png" alt="search_logo" class="nav_icon" />
+      </span>
+      <span class="nav iconbox" title="Google 앱" data-bs-toggle="dropdown" data-bs-display="static"
+        aria-expanded="false" id="googleAppIcon" onclick="onClickOpen()">
+        <img src="../images/app_icon.png" alt="search_logo" class="nav_icon" />
+      </span>
+    </div>
+    <div class="btn-groupbox">
+      <div class="btn-group">
+        <ul class="menu" id="googleAppList">
+          <!-- JS로 list 추가 -->
+        </ul>
+      </div>
     </div>
     <div class="img">
       <!-- 구글이미지 -->
       <img src="../images/google_logo.svg" alt="google_logo" />
     </div>
-    <!-- 검색창 -->
     <div class="inputbox">
+      <!-- 검색창 -->
       <img src="../images/search_logo.png" alt="search_logo" class="searce_logo" />
-      <input type="text" placeholder="Google 검색 또는 URL 입력" class="in" />
-      <img src="../images/mic.svg" alt="search_logo" class="mic_logo" />
-      <img src="../images/camera.svg" alt="search_logo" class="camera_logo3" />
+      <input type="text" placeholder="Google 검색 또는 URL 입력" class="input" />
+      <img src="../images/mic.svg" alt="search_logo" class="mic_logo" onclick="readyalert('음성 검색')" title="음성 검색" />
+      <img src="../images/camera.svg" alt="search_logo" class="camera_logo" onclick="readyalert('이미지 검색')"
+        title="이미지로 검색" />
     </div>
-    <!-- 동그라미 링크창들 -->
     <div class="circlebtn">
+      <!-- 동그라미 링크창들 -->
       <span class="btn1">
-        <div>
-          <img src="../images/search_logo.png" alt="search_logo" class="searce_logo" class="img1" />
+        <div class="textAlign" onclick="moveLink('네이버')" title="네이버">
+          <img src="../images/naver_icon.png" alt="naver_icon" class="program_img remainimg" />
+          <div>네이버</div>
         </div>
-        <div>네이버</div>
+        <div class="morebox" onclick="readyalert('네이버 바로가기 추가 작업')">
+          <img src="../images/more_icon.png" alt="more_icon" class="moreimg" title="네이버 바로가기 추가 작업" />
+        </div>
+      </span>
+
+      <span class="btn1">
+        <div class="textAlign" onclick="moveLink('넷플릭스')" title="넷플릭스">
+          <img src="../images/netflix_icon.png" alt="netflix_icon" class="program_img remainimg" />
+          <div>넷플릭스</div>
+        </div>
+        <div class="morebox" onclick="readyalert('넷플릭스 바로가기 추가 작업')">
+          <img src="../images/more_icon.png" alt="more_icon" class="moreimg" title="넷플릭스 바로가기 추가 작업" />
+        </div>
       </span>
       <span class="btn1">
-        <div>
-          <img src="../images/search_logo.png" alt="search_logo" class="searce_logo" class="img1" />
+        <div class="textAlign" onclick="moveLink('유튜브')" title="유튜브">
+          <img src="../images/youtube_icon.png" alt="youtube_icon" class="program_img remainimg" />
+          <div>유튜브</div>
         </div>
-        <div>넷플릭스</div>
+        <div class="morebox" onclick="readyalert('유튜브 바로가기 추가 작업')">
+          <img src="../images/more_icon.png" alt="more_icon" class="moreimg" title="유튜브 바로가기 추가 작업" />
+        </div>
       </span>
       <span class="btn1">
-        <div>
-          <img src="../images/search_logo.png" alt="search_logo" class="searce_logo" class="img1" />
+        <div class="textAlign" onclick="readyalert('바로가기 추가')" title="바로가기 추가">
+          <img src="../images/add.svg" alt="add_logo" class="program_img addimg" />
+          <div>바로가기 추가</div>
         </div>
-        <div>사람인</div>
+
       </span>
-      <span class="btn1">
-        <div>
-          <img src="../images/search_logo.png" alt="search_logo" class="searce_logo" class="img1" />
-        </div>
-        <div>잡코리아</div>
-      </span>
+    </div>
+    <div class="fixedBtn" onclick="readyalert('크롬 맞춤설정')" title="페이지 맞춤설정">
+      <img src="../images/pencil_icon.svg" alt="pencil_icon" class="pencil_icon" />
+      <span>Chrome 맞춤설정</span>
     </div>
   </div>
   <!-- 밑에 크롬 맞춤설정 구현 -->
 </body>
 <script>
-  const moveLink = () => {
+  let open = false;
 
+  //list를 만들어 추가하는 함수
+  const onClickOpen = () => {
+    open = !open;
+    const dropdownGroup = document.getElementById('googleAppList');
+    //만약 메뉴의 자식이 없다면 실행
+    if (dropdownGroup.children.length <= 0) {
+      for (let i = 0; i < data.length; i++) {
+        //li 요소 만들고 class를 줌
+        const lists = document.createElement('li');
+        lists.className = 'list';
+        // lists.setAttribute(onclick, readyalert);
+
+        //li 요소 밑에 넣을 img요소 만들어 이미지 넣음
+        const img = document.createElement('img');
+        img.src = data[i].url;
+        img.alt = data[i].name;
+
+        //li 요소 밑에 넣을 div요소 만들어 이름 넣음
+        const names = document.createElement('div');
+        names.innerText = data[i].name;
+
+        //li 요소 밑에 이미지, 이름 넣음
+        lists.appendChild(img);
+        lists.appendChild(names);
+
+        //li 요소도 부모 밑에 넣음
+        dropdownGroup.appendChild(lists);
+      }
+    }
+
+    //없앴다 생겼다
+    if (open === false) {
+      dropdownGroup.style.display = 'none';
+    } else {
+      dropdownGroup.style.display = 'grid';
+    }
   }
+
+  //구글앱에 넣을 데이터
+  const data = [
+    { id: 1, name: '검색', url: '../images/검색.png' },
+    { id: 2, name: '지도', url: '../images/지도.png' },
+    { id: 3, name: 'YouTube', url: '../images/youtube_icon.png' },
+    { id: 4, name: 'Gemini', url: '../images/gemini.png' },
+    { id: 5, name: '뉴스', url: '../images/뉴스.png' },
+    { id: 6, name: 'Gmail', url: '../images/메일.png' },
+    { id: 7, name: 'Meet', url: '../images/meet.png' },
+    { id: 8, name: '채팅', url: '../images/채팅.png' },
+    { id: 9, name: '주소록', url: '../images/주소록.png' },
+    { id: 10, name: '드라이브', url: '../images/드라이브.png' },
+    { id: 12, name: 'Calendar', url: '../images/캘린더.png' },
+    { id: 13, name: 'Play', url: '../images/play.png' },
+    { id: 14, name: '번역', url: '../images/번역.png' },
+    { id: 15, name: '사진', url: '../images/사진.png' },
+    { id: 16, name: '내 광고 센터', url: '../images/광고.png' },
+    { id: 17, name: '쇼핑', url: '../images/쇼핑.png' },
+    { id: 18, name: '금융', url: '../images/금융.png' },
+    { id: 19, name: 'Docs', url: '../images/docs.png' },
+    { id: 20, name: 'Sheets', url: '../images/sheets.png' },
+    { id: 21, name: 'Slides', url: '../images/slides.png' },
+    { id: 22, name: '도서', url: '../images/도서.png' },
+    { id: 23, name: 'Blogger', url: '../images/blogger.png' },
+    { id: 24, name: 'Keep', url: '../images/크롬웹스토어.png' },
+    { id: 25, name: '클래스룸', url: '../images/keep.png' },
+    { id: 26, name: '어스', url: '../images/클래스룸.png' },
+    { id: 27, name: '저장됨', url: '../images/어스.png' },
+    { id: 28, name: '아트 앤 컬처', url: '../images/저장됨.png' },
+    { id: 29, name: 'Google Ads', url: '../images/아트.png' },
+    { id: 30, name: 'Merchant Center', url: '../images/ad.png' },
+    { id: 31, name: 'Google One', url: '../images/rchant.png' },
+    { id: 32, name: '여행', url: '../images/구글원.png' },
+    { id: 33, name: 'Forms', url: '../images/여행.png' },
+    { id: 34, name: 'Google Store', url: '../images/forms.png' },
+    { id: 35, name: 'Chrome 웹 스토어', url: '../images/스토어.png' },
+    { id: 36, name: '비밀번호 관리자', url: '../images/비밀번호.png' },
+    { id: 37, name: 'Google 애널리틱스', url: '../images/애널리틱스.png' },
+  ];
+
+
+  //링크 이동 함수
+  const moveLink = (type) => {
+    if (type === '네이버') {
+      window.location.href = "https://www.naver.com/";
+    } else if (type === '넷플릭스') {
+      window.location.href = "https://www.netflix.com/kr/";
+    } else if (type === '유튜브') {
+      window.location.href = "https://www.youtube.com/";
+    }
+  }
+
+  //준비중 함수
+  const readyalert = (type) => {
+    alert(`${type} 기능 준비중입니다.`);
+  }
+
+
 </script>
 
 </html>
