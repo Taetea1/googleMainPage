@@ -60,13 +60,14 @@
 }
 .btn-group {
   position: absolute;
+  border-radius: 20px;
   z-index: 10;
   top: 0;
   right: 0;
-  background-color: white;
+  background-color: rgb(233, 239, 245);
 }
 .menu {
-  max-height: 600px;
+  max-height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   justify-content: center;
