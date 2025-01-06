@@ -64,9 +64,11 @@
   z-index: 10;
   top: 0;
   right: 0;
+  padding: 10px;
   background-color: rgb(233, 239, 245);
 }
 .menu {
+  margin: 1px 0px;
   max-height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -76,6 +78,8 @@
   padding: 10px;
   width: 350px;
   display: none;
+  border-radius: 20px;
+  background-color: rgb(210, 226, 243);
 }
 .list:hover {
   cursor: pointer;
