@@ -95,6 +95,17 @@
   const onClickOpen = () => {
     open = !open;
     const dropdownGroup = document.getElementById('googleAppList');
+    const btnGroup = document.querySelector('.btn-group');
+
+    //없앴다 생겼다
+    if (open === false) {
+      btnGroup.style.display = 'none';
+      dropdownGroup.style.display = 'none';
+    } else {
+      btnGroup.style.display = 'block';
+      dropdownGroup.style.display = 'grid';
+    }
+
     //만약 메뉴의 자식이 없다면 실행
     if (dropdownGroup.children.length <= 0) {
       for (let i = 0; i < data.length; i++) {
@@ -122,13 +133,6 @@
         //li 요소도 부모 밑에 넣음
         dropdownGroup.appendChild(lists);
       }
-    }
-
-    //없앴다 생겼다
-    if (open === false) {
-      dropdownGroup.style.display = 'none';
-    } else {
-      dropdownGroup.style.display = 'grid';
     }
   }
 

@@ -59,6 +59,7 @@
   position: relative;
 }
 .btn-group {
+  display: none;
   position: absolute;
   border-radius: 20px;
   z-index: 10;
@@ -70,14 +71,12 @@
 .menu {
   margin: 1px 0px;
   max-height: 400px;
-  display: grid;
   grid-template-columns: repeat(3, 100px);
   justify-content: center;
   gap: 10px;
   overflow: auto;
   padding: 10px;
   width: 350px;
-  display: none;
   border-radius: 20px;
   background-color: rgb(210, 226, 243);
 }
