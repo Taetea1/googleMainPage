@@ -6,7 +6,7 @@
 
 </br><br>
 
-## 🔍 프로젝트 기술 스택 및 개발 환경
+## 🔍프로젝트 기술 스택 및 개발 환경
 ### 🛠️ 기술 스택
 <img 
 src="https://img.shields.io/badge/html5-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white" />
@@ -20,14 +20,14 @@ src="https://img.shields.io/badge/html5-%23E34F26.svg?&style=for-the-badge&logo=
 </br><br>
 
 
-## 📝 소개
+## 📝소개
 <img width="1280" alt="Image" src="https://github.com/user-attachments/assets/792aba38-8a1a-4c11-9e7b-b96156986862" />
 
 Html과 CSS, JavaScript로 구현한 구글 메인 페이지입니다.
 
 <br><br>
 
-## 💎 주요기능
+## 💎주요기능
 ### 1️⃣ 각 요소의 효과<br>
 ![Image](https://github.com/user-attachments/assets/eacc2d78-10f8-41dc-8080-ffb335ab1314)<br>
 - 각 요소 호버시 효과
